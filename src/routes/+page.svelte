@@ -37,7 +37,7 @@
   }
   
   function pickCheese() {
-    const randomIndex = Math.floor(Math.random() * breads.length);
+    const randomIndex = Math.floor(Math.random() * cheeses.length);
     return cheeses[randomIndex];
   }
   
@@ -50,36 +50,68 @@
     let bread = null;
     let cheese = null;
     let vegetableObjects = [];
+    let sandwichStack = 0;
+
+    let sandwichComposition = {
+      cheese: false,
+      vegetables: false,
+      // TODO Add more ingredients
+    };
+
+    for (let ingredient in sandwichComposition) {
+      sandwichComposition[ingredient] = Math.random() < 0.5;
+    }
+
+    console.log('Sandwich composition:', sandwichComposition);
 
     // Randomly pick a bread
     bread = pickBread();
+    console.log('Bread:', 2);
+    sandwichStack = sandwichStack + 2;
 
-    // Randomly decide whether to add cheese
-    if (Math.random() < 0.5) {
+    // Add cheese
+    if (sandwichComposition.cheese) {
       cheese = pickCheese();
+      console.log('Cheese:', 1);
+      sandwichStack++;
     }
 
     // Randomly decide whether to add vegetables
-    if (Math.random() < 0.5) {
+    if (sandwichComposition.vegetables) {
       // Generate a random number of vegetables (between 1 and the total number of vegetables)
       const numVegetables = Math.floor(Math.random() * vegetables.length) + 1;
 
       // Add a random vegetable to the sandwich for each vegetable
       for (let i = 0; i < numVegetables; i++) {
-        const vegetable = pickVegetable();
+        let vegetable = pickVegetable();
+
+        // Check if the vegetable already exists in vegetableObjects
+        while (vegetableObjects.some(obj => obj.label === vegetable.label)) {
+          // If it does, pick a new vegetable
+          vegetable = pickVegetable();
+        }
+
         vegetableObjects.push(vegetable);
       }
+      console.log('Vegetables:', vegetableObjects.length);
+      sandwichStack = vegetableObjects.length + sandwichStack;
     }
+
+    console.log('Sandwich stack:', sandwichStack);
 
     // Return the sandwich object
     return {
-      bread: bread,
+      sandwichStack: sandwichStack,
+      topBread: bread,
       cheese: cheese,
-      vegetables: vegetableObjects
+      vegetables: vegetableObjects,
+      bottomBread: bread
     };
   }
 
   const sandwich = buildSandwich();
+
+  console.log('Sandwich:', sandwich);
   
   if (typeof window !== 'undefined') {
     $: document.body.style.backgroundColor = getRandomColor();
@@ -88,16 +120,9 @@
   </script>
 
 <h1 class="sammitch-header center">Random Sandwich</h1>
-<!-- {@html sandwich} -->
 
-<div class="ingredient-list">
-  {#each [sandwich.bread, ...sandwich.vegetables, sandwich.cheese, sandwich.bread].filter(Boolean) as ingredient (ingredient.label)}
-    <p>{ingredient.label}</p>
-  {/each}
-</div>
-
-<div class="sandwich sandwich-stack">
-  <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
+<div class="sandwich sandwich-stack" style="height:{sandwich.sandwichStack * 6}dvw">
+  <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
   {#if sandwich.vegetables }
     {#each sandwich.vegetables as vegetable (vegetable.label)}
       <img src="{vegetable.image}" alt="{vegetable.label}" />
@@ -106,5 +131,12 @@
   {#if sandwich.cheese}
     <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
   {/if}
-  <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
+  <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
+</div>
+
+<div class="ingredient-list">
+  <h3>How to make this sandwich</h3>
+  {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
+    <p>{ingredient.label}</p>
+  {/each}
 </div>
