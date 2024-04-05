@@ -2,102 +2,107 @@
   <link rel="stylesheet" href="/global.css">
 </svelte:head>
 
-<h1 class="sammitch-header center">Random Sandwich</h1>
-{@html sandwich}
-
 <script>
 
-// Page background colors
-const colors = ['red', 'blue', 'green', 'yellow', 'pink', 'purple']; // replace with your preferred colors
+  // Page background colors
+  const colors = ['red', 'blue', 'green', 'yellow', 'pink', 'purple']; // replace with your preferred colors
+  
+  // Sandwich breads
+  const breads = [
+    {label: "White bread", image: "/images/bread/bread-white.svg"},
+    {label: "Whole wheat", image: "/images/bread/bread-wheat.svg"},
+    {label: "Brown rye", image: "/images/bread/bread-rye-brown.svg"},
+    {label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg"},
+  ]
+  
+  const cheeses = [
+    { label: "American cheese", image: "/images/cheese/cheese-american.svg"},
+    { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg"},
+    { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg"},
+  ]
+  
+  const vegetables = [
+    { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg" },
+    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" },
+  ]
+  
+  function getRandomColor() {
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  }
+  
+  function pickBread() {
+    const randomIndex = Math.floor(Math.random() * breads.length);
+    return breads[randomIndex];
+  }
+  
+  function pickCheese() {
+    const randomIndex = Math.floor(Math.random() * breads.length);
+    return cheeses[randomIndex];
+  }
+  
+  function pickVegetable() {
+    const randomIndex = Math.floor(Math.random() * vegetables.length);
+    return vegetables[randomIndex];
+  }
+  
+  function buildSandwich() {
+    let bread = null;
+    let cheese = null;
+    let vegetableObjects = [];
 
-// Sandwich breads
-const breads = [
-  {label: "White bread", image: "/images/bread/bread-white.svg"},
-  {label: "Whole wheat", image: "/images/bread/bread-wheat.svg"},
-  {label: "Brown rye", image: "/images/bread/bread-rye-brown.svg"},
-  {label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg"},
-]
+    // Randomly decide whether to add bread
+    if (Math.random() < 0.5) {
+      bread = pickBread();
+    }
 
-const cheeses = [
-  { label: "American cheese", image: "/images/cheese/cheese-american.svg"},
-  { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg"},
-  { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg"},
-]
+    // Randomly decide whether to add cheese
+    if (Math.random() < 0.5) {
+      cheese = pickCheese();
+    }
 
-const vegetables = [
-  { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg" },
-  { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" },
-]
+    // Randomly decide whether to add vegetables
+    if (Math.random() < 0.5) {
+      // Generate a random number of vegetables (between 1 and the total number of vegetables)
+      const numVegetables = Math.floor(Math.random() * vegetables.length) + 1;
 
-function getRandomColor() {
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
-}
+      // Add a random vegetable to the sandwich for each vegetable
+      for (let i = 0; i < numVegetables; i++) {
+        const vegetable = pickVegetable();
+        vegetableObjects.push(vegetable);
+      }
+    }
 
-function pickBread() {
-  const randomIndex = Math.floor(Math.random() * breads.length);
-  return breads[randomIndex];
-}
-
-function pickCheese() {
-  const randomIndex = Math.floor(Math.random() * breads.length);
-  return cheeses[randomIndex];
-}
-
-function pickVegetable() {
-  const randomIndex = Math.floor(Math.random() * vegetables.length);
-  return vegetables[randomIndex];
-}
-
-function buildSandwich() {
-  const bread = pickBread();
-  const cheese = pickCheese();
-
-  // Generate a random number of vegetables (between 1 and the total number of vegetables)
-  const numVegetables = Math.floor(Math.random() * vegetables.length) + 1;
-
-  // Create an array to hold the vegetable images
-  let vegetableImages = '';
-
-  // Create an array to hold the names of the ingredients
-  let ingredients = [];
-
-  // Add the bread to the ingredients list
-  ingredients.push(bread.label);
-
-  // Add a random vegetable to the sandwich for each vegetable
-  for (let i = 0; i < numVegetables; i++) {
-    const vegetable = pickVegetable();
-    ingredients.push(vegetable.label);
-    vegetableImages += `<img src="${vegetable.image}" alt="${vegetable.label}" />`;
+    // Return the sandwich object
+    return {
+      bread: bread,
+      cheese: cheese,
+      vegetables: vegetableObjects
+    };
   }
 
-  // Add the cheese to the ingredients list
-  ingredients.push(cheese.label);
-
-  // Build the list of ingredients
-  let ingredientList = '';
-  for (let ingredient of ingredients) {
-    ingredientList += `<p>${ingredient}</p>`;
+  const sandwich = buildSandwich();
+  
+  if (typeof window !== 'undefined') {
+    $: document.body.style.backgroundColor = getRandomColor();
   }
+  
+  </script>
 
-  return `
-    <div class="ingredient-list">
-      ${ingredientList}
-    </div>
-    <div class="sandwich sandwich-stack">
-      <img src="${bread.image}" alt="${bread.label}" />
-      ${vegetableImages}
-      <img src="${cheese.image}" alt="${cheese.label}" />
-      <img src="${bread.image}" alt="${bread.label}" />
-    </div>
-  `;
-}
+<h1 class="sammitch-header center">Random Sandwich</h1>
+<!-- {@html sandwich} -->
 
-$: sandwich = buildSandwich();
+<div class="ingredient-list">
+  {#each [sandwich.bread, ...sandwich.vegetables, sandwich.cheese, sandwich.bread] as ingredient (ingredient.label)}
+    <p>{ingredient.label}</p>
+  {/each}
+</div>
 
-if (typeof window !== 'undefined') {
-  $: document.body.style.backgroundColor = getRandomColor();
-}
-
-</script>
+<div class="sandwich sandwich-stack">
+  <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
+  {#each sandwich.vegetables as vegetable (vegetable.label)}
+    <img src="{vegetable.image}" alt="{vegetable.label}" />
+  {/each}
+  <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
+  <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
+</div>
