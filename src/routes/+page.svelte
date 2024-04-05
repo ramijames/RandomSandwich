@@ -48,33 +48,26 @@
   }
   
   function validateSandwich(sandwich){
-
-    console.log('Validating sandwich:', sandwich);
-
+    // console.log('Validating sandwich:', sandwich);
     let sandwichValid = true;
-
     if (!sandwich.cheese && !sandwich.vegetables) {
       sandwichValid = false;
     }
-
-    // if (!sandwich.cheese) {
-    //   console.log('No cheese');
-    // } else {
-    //   console.log('Has cheese');
-    // }
-
-    // if (sandwich.vegetables) {
-    //   for (let vegetable of sandwich.vegetables) {
-    //     if (sandwich.vegetables.length === 0) {
-    //       console.log('No vegetables');
-    //     } else {
-    //       console.log('Has at least one vegetable');
-    //     }
-    //   }
-    // }
-
     return sandwichValid;
+  }
 
+  function sandwichStack(sandwich){
+    let stack = 0;
+    if(sandwich.bread){
+      stack = 2;
+    }
+    if(sandwich.cheese){
+      stack++;
+    }
+    if(sandwich.vegetables){
+      stack = stack + sandwich.vegetables.length;
+    }
+    return stack;
   }
 
   // For each ingredient type, I just want to return whether or not it should be included in the sandwich
@@ -84,12 +77,9 @@
 
   function buildSandwich() {
     // Each sandwich has a top and bottom bread, cheese, and vegetables
-    // If there is no cheese and no vegetables, we have to add at least one
-
     let bread = null;
     let cheese = null;
     let vegetableObjects = [];
-    // let sandwichStack = 0;
 
     let sandwichComposition = {
       cheese: false,
@@ -107,8 +97,6 @@
 
     // Randomly pick a bread, we always have bread
     bread = pickBread();
-    // console.log('Bread:', 2);
-    // sandwichStack = sandwichStack + 2;
 
     // Add cheese if the sandwich composition includes cheese
     let cheesy = validateSandwich(sandwichComposition);
@@ -119,8 +107,6 @@
 
     if (sandwichComposition.cheese) {
       cheese = pickCheese();
-      // console.log('Cheese:', 1);
-      // sandwichStack++;
     }
 
     // Add vegetables if the sandwich composition includes vegetables
@@ -140,15 +126,9 @@
 
         vegetableObjects.push(vegetable);
       }
-      // console.log('Vegetables:', vegetableObjects.length);
-      // sandwichStack = vegetableObjects.length + sandwichStack;
     }
 
-    // console.log('Sandwich stack:', sandwichStack);
-
-    // Return the sandwich object
     return {
-      // sandwichStack: sandwichStack,
       topBread: bread,
       cheese: cheese,
       vegetables: vegetableObjects,
