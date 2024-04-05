@@ -23,7 +23,8 @@
   
   const vegetables = [
     { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg" },
-    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" }
+    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" },
+    { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg" }
   ]
   
   function getRandomColor() {
@@ -46,11 +47,49 @@
     return vegetables[randomIndex];
   }
   
+  function validateSandwich(sandwich){
+
+    console.log('Validating sandwich:', sandwich);
+
+    let sandwichValid = true;
+
+    if (!sandwich.cheese && !sandwich.vegetables) {
+      sandwichValid = false;
+    }
+
+    // if (!sandwich.cheese) {
+    //   console.log('No cheese');
+    // } else {
+    //   console.log('Has cheese');
+    // }
+
+    // if (sandwich.vegetables) {
+    //   for (let vegetable of sandwich.vegetables) {
+    //     if (sandwich.vegetables.length === 0) {
+    //       console.log('No vegetables');
+    //     } else {
+    //       console.log('Has at least one vegetable');
+    //     }
+    //   }
+    // }
+
+    return sandwichValid;
+
+  }
+
+  // For each ingredient type, I just want to return whether or not it should be included in the sandwich
+  function randomIngredient(){
+    return Math.random() < 0.5;
+  }
+
   function buildSandwich() {
+    // Each sandwich has a top and bottom bread, cheese, and vegetables
+    // If there is no cheese and no vegetables, we have to add at least one
+
     let bread = null;
     let cheese = null;
     let vegetableObjects = [];
-    let sandwichStack = 0;
+    // let sandwichStack = 0;
 
     let sandwichComposition = {
       cheese: false,
@@ -58,25 +97,33 @@
       // TODO Add more ingredients
     };
 
+    console.log('Sandwich composition start:', sandwichComposition);
+
     for (let ingredient in sandwichComposition) {
       sandwichComposition[ingredient] = Math.random() < 0.5;
     }
 
-    console.log('Sandwich composition:', sandwichComposition);
+    console.log('Sandwich composition randomized:', sandwichComposition);
 
-    // Randomly pick a bread
+    // Randomly pick a bread, we always have bread
     bread = pickBread();
-    console.log('Bread:', 2);
-    sandwichStack = sandwichStack + 2;
+    // console.log('Bread:', 2);
+    // sandwichStack = sandwichStack + 2;
 
-    // Add cheese
-    if (sandwichComposition.cheese) {
-      cheese = pickCheese();
-      console.log('Cheese:', 1);
-      sandwichStack++;
+    // Add cheese if the sandwich composition includes cheese
+    let cheesy = validateSandwich(sandwichComposition);
+    if(cheesy === false){
+      console.log('No cheese, adding cheese');
+      sandwichComposition.cheese = true;
     }
 
-    // Randomly decide whether to add vegetables
+    if (sandwichComposition.cheese) {
+      cheese = pickCheese();
+      // console.log('Cheese:', 1);
+      // sandwichStack++;
+    }
+
+    // Add vegetables if the sandwich composition includes vegetables
     if (sandwichComposition.vegetables) {
       // Generate a random number of vegetables (between 1 and the total number of vegetables)
       const numVegetables = Math.floor(Math.random() * vegetables.length) + 1;
@@ -93,15 +140,15 @@
 
         vegetableObjects.push(vegetable);
       }
-      console.log('Vegetables:', vegetableObjects.length);
-      sandwichStack = vegetableObjects.length + sandwichStack;
+      // console.log('Vegetables:', vegetableObjects.length);
+      // sandwichStack = vegetableObjects.length + sandwichStack;
     }
 
-    console.log('Sandwich stack:', sandwichStack);
+    // console.log('Sandwich stack:', sandwichStack);
 
     // Return the sandwich object
     return {
-      sandwichStack: sandwichStack,
+      // sandwichStack: sandwichStack,
       topBread: bread,
       cheese: cheese,
       vegetables: vegetableObjects,
@@ -111,7 +158,7 @@
 
   const sandwich = buildSandwich();
 
-  console.log('Sandwich:', sandwich);
+  // console.log('Sandwich:', sandwich);
   
   if (typeof window !== 'undefined') {
     $: document.body.style.backgroundColor = getRandomColor();

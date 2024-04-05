@@ -44,7 +44,7 @@ body {
 
 .sandwich-stack img {
   width:100%;
-  position: relative;
+  position: absolute;
   left: 0;
 }
 
@@ -54,27 +54,27 @@ body {
 }
 
 .sandwich-stack img:nth-child(2) {
-  top: -5vw;
+  top: 2.5vw;
   z-index: 99;
 }
 
 .sandwich-stack img:nth-child(3) {
-  top: -10vw;
+  top: 5vw;
   z-index: 98;
 }
 
 .sandwich-stack img:nth-child(4) {
-  top: -15vw;
+  top: 7.5vw;
   z-index: 97;
 }
 
 .sandwich-stack img:nth-child(5) {
-  top: -20vw;
+  top: 10vw;
   z-index: 96;
 }
 
 .sandwich-stack img:nth-child(6) {
-  top: -25vw;
+  top: 12.5vw;
   z-index: 95;
 }
 
