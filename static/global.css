@@ -1,3 +1,7 @@
+html,body {
+  height:100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +20,11 @@ body {
   color:white;
 }
 
+.sandwitch-builder {
+  display:flex;
+  flex-direction: row;
+}
+
 .center {
   text-align: center;
 }
@@ -25,13 +34,17 @@ body {
   margin: 0 auto;
 }
 
+.sandwich-image {
+  width:50%;
+}
+
 .sandwich-stack {
   position: relative;
 }
 
 .sandwich-stack img {
   width:100%;
-  position: absolute;
+  position: relative;
   left: 0;
 }
 
@@ -41,41 +54,36 @@ body {
 }
 
 .sandwich-stack img:nth-child(2) {
-  top: 2.5vw;
+  top: -5vw;
   z-index: 99;
 }
 
 .sandwich-stack img:nth-child(3) {
-  top: 5vw;
+  top: -10vw;
   z-index: 98;
 }
 
 .sandwich-stack img:nth-child(4) {
-  top: 7.5vw;
+  top: -15vw;
   z-index: 97;
 }
 
 .sandwich-stack img:nth-child(5) {
-  top: 10vw;
+  top: -20vw;
   z-index: 96;
 }
 
 .sandwich-stack img:nth-child(6) {
-  top: 12.5vw;
+  top: -25vw;
   z-index: 95;
 }
 
 /* Recipe */
 
 .ingredient-list {
-  width: 30vw;
-  margin: 0 auto;
-  display:block;
+  width: 50%;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: white;
-  padding:2rem;
-  margin-bottom:2rem;
-  box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+  color: white;
 }

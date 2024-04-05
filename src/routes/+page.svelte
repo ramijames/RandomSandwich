@@ -121,22 +121,28 @@
 
 <h1 class="sammitch-header center">Random Sandwich</h1>
 
-<div class="sandwich sandwich-stack" style="height:{sandwich.sandwichStack * 6}dvw">
-  <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
-  {#if sandwich.vegetables }
-    {#each sandwich.vegetables as vegetable (vegetable.label)}
-      <img src="{vegetable.image}" alt="{vegetable.label}" />
-    {/each}
-  {/if}
-  {#if sandwich.cheese}
-    <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
-  {/if}
-  <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
-</div>
+<section class="sandwitch-builder">
 
-<div class="ingredient-list">
-  <h3>How to make this sandwich</h3>
-  {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
-    <p>{ingredient.label}</p>
-  {/each}
-</div>
+  <section class="sandwich-image">
+    <div class="sandwich sandwich-stack">
+      <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
+      {#if sandwich.vegetables }
+        {#each sandwich.vegetables as vegetable (vegetable.label)}
+          <img src="{vegetable.image}" alt="{vegetable.label}" />
+        {/each}
+      {/if}
+      {#if sandwich.cheese}
+        <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
+      {/if}
+      <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
+    </div>
+  </section>
+
+  <div class="ingredient-list">
+    <h2>Ingredients</h2>
+    {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
+      <p>{ingredient.label}</p>
+    {/each}
+  </div>
+
+</section>
