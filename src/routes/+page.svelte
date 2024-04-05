@@ -9,21 +9,21 @@
   
   // Sandwich breads
   const breads = [
-    {label: "White bread", image: "/images/bread/bread-white.svg"},
-    {label: "Whole wheat", image: "/images/bread/bread-wheat.svg"},
-    {label: "Brown rye", image: "/images/bread/bread-rye-brown.svg"},
-    {label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg"},
+    { label: "White bread", image: "/images/bread/bread-white.svg" },
+    { label: "Whole wheat", image: "/images/bread/bread-wheat.svg" },
+    { label: "Brown rye", image: "/images/bread/bread-rye-brown.svg" },
+    { label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg" }
   ]
   
   const cheeses = [
-    { label: "American cheese", image: "/images/cheese/cheese-american.svg"},
-    { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg"},
-    { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg"},
+    { label: "American cheese", image: "/images/cheese/cheese-american.svg" },
+    { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg" },
+    { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg" }
   ]
   
   const vegetables = [
     { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg" },
-    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" },
+    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" }
   ]
   
   function getRandomColor() {
@@ -51,10 +51,8 @@
     let cheese = null;
     let vegetableObjects = [];
 
-    // Randomly decide whether to add bread
-    if (Math.random() < 0.5) {
-      bread = pickBread();
-    }
+    // Randomly pick a bread
+    bread = pickBread();
 
     // Randomly decide whether to add cheese
     if (Math.random() < 0.5) {
@@ -93,16 +91,20 @@
 <!-- {@html sandwich} -->
 
 <div class="ingredient-list">
-  {#each [sandwich.bread, ...sandwich.vegetables, sandwich.cheese, sandwich.bread] as ingredient (ingredient.label)}
+  {#each [sandwich.bread, ...sandwich.vegetables, sandwich.cheese, sandwich.bread].filter(Boolean) as ingredient (ingredient.label)}
     <p>{ingredient.label}</p>
   {/each}
 </div>
 
 <div class="sandwich sandwich-stack">
   <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
-  {#each sandwich.vegetables as vegetable (vegetable.label)}
-    <img src="{vegetable.image}" alt="{vegetable.label}" />
-  {/each}
-  <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
+  {#if sandwich.vegetables }
+    {#each sandwich.vegetables as vegetable (vegetable.label)}
+      <img src="{vegetable.image}" alt="{vegetable.label}" />
+    {/each}
+  {/if}
+  {#if sandwich.cheese}
+    <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
+  {/if}
   <img src="{sandwich.bread.image}" alt="{sandwich.bread.label}" />
 </div>
