@@ -1,0 +1,27 @@
+<svg width="380" height="100" viewBox="0 0 380 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_64)">
+<path d="M63.6867 2.1518C56.0427 -0.628889 52.9157 2.1518 51.5258 4.93249C39.0979 29.7978 25.9613 54.6405 12.2636 78.6207C9.91182 82.7378 9.50043 89.7048 9 93.1386C10.0564 94.2831 18.5932 96 34.1532 96C139.316 96 352.699 95.861 364.929 95.3048C374.821 94.855 357.883 70.7308 355.201 64.0221C353.811 60.5462 327.404 9.10352 322.887 4.93249C318.37 0.761459 304.472 3.54215 288.142 4.93249C271.812 6.32283 71.3307 4.93249 63.6867 2.1518Z" fill="black" fill-opacity="0.1"/>
+<path d="M364.938 88.5094C367.375 88.5094 368 85 368 80.5L9.5 81C9.49999 85 9.5 85.25 10.5 87C13.1671 89.4247 21.2382 89 34.7687 89C139.739 89 352.727 88.5094 364.938 88.5094Z" fill="#FFF9C8"/>
+<path d="M9.5 81C9.49999 85 9.5 85.25 10.5 87C13.1671 89.4247 21.2382 89 34.7687 89C139.739 89 352.727 88.5094 364.938 88.5094C367.375 88.5094 368 85 368 80.5" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<path d="M51.9896 4.43575C50.6009 6.86519 26.9942 46.3436 21.4397 54.2393C17.2486 60.197 17.0198 62.2961 12.7608 68.816C9.71896 73.4725 10 81.5 10 81.5C10 81.5 22.0726 84 34.6317 84C139.705 84 352.906 83.8785 365.126 83.3927C375.009 82.9997 358.085 61.9227 355.405 56.0614C354.017 53.0246 327.633 8.07992 323.12 4.43575C318.607 0.79159 304.72 3.22103 288.404 4.43575C272.087 5.65048 71.7775 4.43575 64.1401 2.00631C56.5026 -0.423135 53.3782 2.00631 51.9896 4.43575Z" fill="#FFF9C8"/>
+<path d="M64.1401 2.00631C56.5026 -0.423135 53.3782 2.00631 51.9896 4.43575C39.5722 26.1602 26.4469 47.8648 12.7608 68.816C10.411 72.413 10 78.5 9.5 81.5C10.5555 82.5 19.085 84 34.6317 84C139.705 84 352.906 83.8785 365.126 83.3927C375.009 82.9997 358.085 61.9227 355.405 56.0614C354.017 53.0246 327.633 8.07992 323.12 4.43575C318.607 0.79159 304.72 3.22103 288.404 4.43575C272.087 5.65048 71.7775 4.43575 64.1401 2.00631Z" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<g style="mix-blend-mode:overlay">
+<path d="M366 80.5C366 80.5 60.5 80 36.5 80C12.5 80 13.5 76.5 13.5 76.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<ellipse cx="77.5" cy="50" rx="21.5" ry="13" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="286.5" cy="55" rx="21.5" ry="13" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="120.5" cy="24" rx="14.5" ry="9" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="290.5" cy="24" rx="14.5" ry="9" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="185.5" cy="52" rx="14.5" ry="9" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="77.5" cy="52.5" rx="21.5" ry="10.5" fill="white" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="286.5" cy="57.5" rx="21.5" ry="10.5" fill="white" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="120.5" cy="25.5" rx="14.5" ry="7.5" fill="white" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="290.5" cy="25.5" rx="14.5" ry="7.5" fill="white" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="185.5" cy="53.5" rx="14.5" ry="7.5" fill="white" stroke="#FFF392" stroke-width="3" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1_64">
+<rect width="380" height="100" fill="white"/>
+</clipPath>
+</defs>
+</svg>

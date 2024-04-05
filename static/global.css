@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sammitch-header {
+  font-size:9dvw;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  color:white;
+}
+
+.center {
+  text-align: center;
+}
+
+.sandwich {
+  width: 40vw;
+  margin: 0 auto;
+}
+
+.sandwich-stack {
+  position: relative;
+}
+
+.sandwich-stack img {
+  width:100%;
+  position: absolute;
+  left: 0;
+}
+
+.sandwich-stack img:nth-child(1) {
+  top: 0px;
+  z-index: 100;
+}
+
+.sandwich-stack img:nth-child(2) {
+  top: 2.5vw;
+  z-index: 99;
+}
+
+.sandwich-stack img:nth-child(3) {
+  top: 5vw;
+  z-index: 98;
+}
+
+.sandwich-stack img:nth-child(4) {
+  top: 7.5vw;
+  z-index: 97;
+}
+
+.sandwich-stack img:nth-child(5) {
+  top: 10vw;
+  z-index: 96;
+}
+
+.sandwich-stack img:nth-child(6) {
+  top: 12.5vw;
+  z-index: 95;
+}
+
+/* Recipe */
+
+.ingredient-list {
+  width: 30vw;
+  margin: 0 auto;
+  display:block;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+  padding:2rem;
+  margin-bottom:2rem;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+}
