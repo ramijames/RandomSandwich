@@ -163,44 +163,44 @@
   
 </script>
 
-<!-- <section class="loader">
-  <p>The chef is preparing</p>
-</section> -->
+<section class="container">
 
-<section class="links">
-  <p>With ♥ by <a href="https://www.ramijames.com">Rami James</a></p>
-  <p>Star on <a href="https://github.com/ramijames/RandomSandwich">Github</a></p>
-</section>
-
-<h1 class="sammitch-header center">Random Sandwich</h1>
-
-<section class="sandwich-builder">
-
-  <section class="sandwich-selector">
-    <h2>Includes</h2>
-    <Switch bind:value={hasCheese} label="Cheese?" design="slider" /> 
+  <section class="links">
+    <p>With ♥ by <a href="https://www.ramijames.com">Rami James</a></p>
+    <p>Star on <a href="https://github.com/ramijames/RandomSandwich">Github</a></p>
   </section>
 
-  <section class="sandwich-image loader">
-    <div class="sandwich sandwich-stack">
-      <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
-      {#if sandwich.vegetables }
-        {#each sandwich.vegetables as vegetable (vegetable.label)}
-          <img src="{vegetable.image}" alt="{vegetable.label}" />
-        {/each}
-      {/if}
-      {#if sandwich.cheese}
-        <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
-      {/if}
-      <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
+  <h1 class="sammitch-header center">Random Sandwich</h1>
+
+  <section class="sandwich-builder">
+
+    <section class="sandwich-selector">
+      <h2>Includes</h2>
+      <Switch bind:value={hasCheese} label="Cheese?" design="slider" /> 
+    </section>
+
+    <section class="sandwich-image loader">
+      <div class="sandwich sandwich-stack">
+        <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
+        {#if sandwich.vegetables }
+          {#each sandwich.vegetables as vegetable (vegetable.label)}
+            <img src="{vegetable.image}" alt="{vegetable.label}" />
+          {/each}
+        {/if}
+        {#if sandwich.cheese}
+          <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
+        {/if}
+        <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
+      </div>
+    </section>
+
+    <div class="ingredient-list">
+      <h2>Ingredients</h2>
+      {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
+        <p>{ingredient.label}</p>
+      {/each}
     </div>
-  </section>
 
-  <div class="ingredient-list">
-    <h2>Ingredients</h2>
-    {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
-      <p>{ingredient.label}</p>
-    {/each}
-  </div>
+  </section>
 
 </section>
