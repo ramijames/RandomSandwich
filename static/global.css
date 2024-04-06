@@ -36,6 +36,17 @@ body {
   font-weight: 900;
 }
 
+.sammitch-intro {
+  font-size:1dvw;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color:white;
+  text-shadow: 0 4px 2px rgba(0,0,0,.2);
+  margin: 0 auto;
+  display: block;
+}
+
 .sammitch-header {
   font-size:9dvw;
   font-family: "Montserrat", sans-serif;
@@ -44,6 +55,7 @@ body {
   font-style: normal;
   color:white;
   text-shadow: 0 4px 2px rgba(0,0,0,.2), 0 10px 0 rgba(0,0,0,.2);
+  margin-top: 0;
 }
 
 .latest-sammitches-header {
@@ -109,6 +121,7 @@ body {
   width:100%;
   position: absolute;
   left: 0;
+  filter: drop-shadow(0 10px 6px #00000016);
 }
 
 .sandwich-stack img:nth-child(1) {
@@ -117,47 +130,47 @@ body {
 }
 
 .sandwich-stack img:nth-child(2) {
-  top: 2.5vw;
+  top: 2vw;
   z-index: 99;
 }
 
 .sandwich-stack img:nth-child(3) {
-  top: 5vw;
+  top: 4vw;
   z-index: 98;
 }
 
 .sandwich-stack img:nth-child(4) {
-  top: 7.5vw;
+  top: 6vw;
   z-index: 97;
 }
 
 .sandwich-stack img:nth-child(5) {
-  top: 10vw;
+  top: 8vw;
   z-index: 96;
 }
 
 .sandwich-stack img:nth-child(6) {
-  top: 12.5vw;
+  top: 10vw;
   z-index: 95;
 }
 
 .sandwich-stack img:nth-child(7) {
-  top: 15vw;
+  top: 12vw;
   z-index: 94;
 }
 
 .sandwich-stack img:nth-child(8) {
-  top: 17.5vw;
+  top: 14vw;
   z-index: 93;
 }
 
 .sandwich-stack img:nth-child(9) {
-  top: 20vw;
+  top: 16vw;
   z-index: 92;
 }
 
 .sandwich-stack img:nth-child(10) {
-  top: 22.5vw;
+  top: 18vw;
   z-index: 91;
 }
 

@@ -191,6 +191,7 @@
     <p>Star on <a href="https://github.com/ramijames/RandomSandwich">Github</a></p>
   </section>
 
+  <small class="sammitch-intro center">(Don't know what to eat? We do.)</small>
   <h1 class="sammitch-header center">Random Sandwich</h1>
 
   <section class="sandwich-builder">
