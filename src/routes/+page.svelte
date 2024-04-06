@@ -161,7 +161,11 @@
     $: document.body.style.backgroundImage = `url(${background.image})`;
   }
   
-  </script>
+</script>
+
+<!-- <section class="loader">
+  <p>The chef is preparing</p>
+</section> -->
 
 <section class="links">
   <p>With ♥ by <a href="https://www.ramijames.com">Rami James</a></p>
@@ -177,7 +181,7 @@
     <Switch bind:value={hasCheese} label="Cheese?" design="slider" /> 
   </section>
 
-  <section class="sandwich-image">
+  <section class="sandwich-image loader">
     <div class="sandwich sandwich-stack">
       <img src="{sandwich.topBread.image}" alt="{sandwich.topBread.label}" />
       {#if sandwich.vegetables }
