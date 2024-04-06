@@ -11,6 +11,20 @@ body {
   font-style: normal;
 }
 
+.links {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2vw;
+  padding:5vw 5vw 0 5vw;
+  color: white;
+}
+
+.links a {
+  color: white;
+  font-weight: 900;
+}
+
 .sammitch-header {
   font-size:9dvw;
   font-family: "Montserrat", sans-serif;
@@ -18,11 +32,22 @@ body {
   font-weight: 900;
   font-style: normal;
   color:white;
+  text-shadow: 0 4px 2px rgba(0,0,0,.2), 0 10px 0 rgba(0,0,0,.2);
 }
 
-.sandwitch-builder {
+.sandwich-selector {
+  width: 25%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: white;
+}
+
+
+.sandwich-builder {
   display:flex;
   flex-direction: row;
+  margin:0 5vw
 }
 
 .center {
@@ -30,7 +55,7 @@ body {
 }
 
 .sandwich {
-  width: 40vw;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -81,9 +106,9 @@ body {
 /* Recipe */
 
 .ingredient-list {
-  width: 50%;
+  width: 25%;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
+  text-align: right;
   color: white;
 }

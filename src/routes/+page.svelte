@@ -4,8 +4,20 @@
 
 <script>
 
+  import Switch from '../components/Switch.svelte'
+	
+	// let switchValue;
+	let hasCheese = false;
+	// let multiValue;
+
   // Page background colors
-  const colors = ['red', 'blue', 'green', 'yellow', 'pink', 'purple']; // replace with your preferred colors
+  const colors = [
+    { label: "Pickle", hex: "#3E9C13", image: "/images/backgrounds/bg-pickle.png" },
+    { label: "Tomato", hex: "#DB6548", image: "/images/backgrounds/bg-tomato.png" },
+    { label: "Carrot", hex: "#D1AC2A", image: "/images/backgrounds/bg-carrot.png" },
+    { label: "Eggplant", hex: "#7844AA", image: "/images/backgrounds/bg-eggplant.png" },
+    { label: "Mushroom", hex: "#BD9B8E", image: "/images/backgrounds/bg-mushroom.png" },
+  ];
   
   // Sandwich breads
   const breads = [
@@ -27,7 +39,9 @@
     { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg" }
   ]
   
-  function getRandomColor() {
+  function getPageBackground() {
+    // Pick a random color from the colors array
+    // Also set the background image to the color
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   }
@@ -87,13 +101,13 @@
       // TODO Add more ingredients
     };
 
-    console.log('Sandwich composition start:', sandwichComposition);
+    // console.log('Sandwich composition start:', sandwichComposition);
 
     for (let ingredient in sandwichComposition) {
       sandwichComposition[ingredient] = Math.random() < 0.5;
     }
 
-    console.log('Sandwich composition randomized:', sandwichComposition);
+    // console.log('Sandwich composition randomized:', sandwichComposition);
 
     // Randomly pick a bread, we always have bread
     bread = pickBread();
@@ -139,16 +153,29 @@
   const sandwich = buildSandwich();
 
   // console.log('Sandwich:', sandwich);
+
+  const background = getPageBackground();
   
   if (typeof window !== 'undefined') {
-    $: document.body.style.backgroundColor = getRandomColor();
+    $: document.body.style.backgroundColor = background.hex;
+    $: document.body.style.backgroundImage = `url(${background.image})`;
   }
   
   </script>
 
+<section class="links">
+  <p>With ♥ by <a href="https://www.ramijames.com">Rami James</a></p>
+  <p>Star on <a href="https://github.com/ramijames/RandomSandwich">Github</a></p>
+</section>
+
 <h1 class="sammitch-header center">Random Sandwich</h1>
 
-<section class="sandwitch-builder">
+<section class="sandwich-builder">
+
+  <section class="sandwich-selector">
+    <h2>Includes</h2>
+    <Switch bind:value={hasCheese} label="Cheese?" design="slider" /> 
+  </section>
 
   <section class="sandwich-image">
     <div class="sandwich sandwich-stack">
