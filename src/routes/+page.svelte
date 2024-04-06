@@ -37,7 +37,8 @@
     { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg", icon: "/images/vegetables/vegetable-tomato-small.svg" },
     { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg", icon: "/images/vegetables/vegetable-lettuce-small.svg" },
     { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg", icon: "/images/vegetables/vegetable-red-onion-small.svg" },
-    { label: "White onions", image: "/images/vegetables/vegetable-white-onion.svg", icon: "/images/vegetables/vegetable-white-onion-small.svg" }
+    { label: "White onions", image: "/images/vegetables/vegetable-white-onion.svg", icon: "/images/vegetables/vegetable-white-onion-small.svg" },
+    { label: "Pickles", image: "/images/vegetables/vegetable-pickles.svg", icon: "/images/vegetables/vegetable-pickles-small.svg" }
   ]
 
   const proteins = [
