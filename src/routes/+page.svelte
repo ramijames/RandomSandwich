@@ -21,22 +21,22 @@
   
   // Sandwich breads
   const breads = [
-    { label: "White bread", image: "/images/bread/bread-white.svg" },
-    { label: "Whole wheat", image: "/images/bread/bread-wheat.svg" },
-    { label: "Brown rye", image: "/images/bread/bread-rye-brown.svg" },
-    { label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg" }
+    { label: "White bread", image: "/images/bread/bread-white.svg", icon: "/images/bread/bread-white-small.svg" },
+    { label: "Whole wheat", image: "/images/bread/bread-wheat.svg", icon: "/images/bread/bread-wheat-small.svg" },
+    { label: "Brown rye", image: "/images/bread/bread-rye-brown.svg", icon: "/images/bread/bread-rye-brown-small.svg" },
+    { label: "Sourdough bread", image: "/images/bread/bread-sourdough.svg", icon: "/images/bread/bread-sourdough-small.svg" }
   ]
   
   const cheeses = [
-    { label: "American cheese", image: "/images/cheese/cheese-american.svg" },
-    { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg" },
-    { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg" }
+    { label: "American cheese", image: "/images/cheese/cheese-american.svg", icon: "/images/cheese/cheese-american-small.svg" },
+    { label: "Cheddar cheese", image: "/images/cheese/cheese-cheddar.svg", icon: "/images/cheese/cheese-cheddar-small.svg" },
+    { label: "Swiss cheese", image: "/images/cheese/cheese-swiss.svg", icon: "/images/cheese/cheese-swiss-small.svg" }
   ]
   
   const vegetables = [
-    { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg" },
-    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg" },
-    { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg" }
+    { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg", icon: "/images/vegetables/vegetable-tomato-small.svg" },
+    { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg", icon: "/images/vegetables/vegetable-lettuce-small.svg" },
+    { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg", icon: "/images/vegetables/vegetable-red-onion-small.svg" }
   ]
   
   function getPageBackground() {
@@ -196,9 +196,14 @@
 
     <div class="ingredient-list">
       <h2>Ingredients</h2>
-      {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
-        <p>{ingredient.label}</p>
-      {/each}
+      <section class="grid">
+        {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
+          <p>
+            <img src="{ingredient.icon}" alt="{ingredient.label}" />
+            {ingredient.label}
+          </p>
+        {/each}
+    </section>
     </div>
 
   </section>
