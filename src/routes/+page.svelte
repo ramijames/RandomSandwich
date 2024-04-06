@@ -36,7 +36,15 @@
   const vegetables = [
     { label: "Tomato", image: "/images/vegetables/vegetable-tomato.svg", icon: "/images/vegetables/vegetable-tomato-small.svg" },
     { label: "Lettuce", image: "/images/vegetables/vegetable-lettuce.svg", icon: "/images/vegetables/vegetable-lettuce-small.svg" },
-    { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg", icon: "/images/vegetables/vegetable-red-onion-small.svg" }
+    { label: "Red onions", image: "/images/vegetables/vegetable-red-onion.svg", icon: "/images/vegetables/vegetable-red-onion-small.svg" },
+    { label: "White onions", image: "/images/vegetables/vegetable-white-onion.svg", icon: "/images/vegetables/vegetable-white-onion-small.svg" }
+  ]
+
+  const proteins = [
+    { label: "Roast beef", image: "/images/proteins/protein-roastbeef.svg", icon: "/images/proteins/protein-roastbeef-small.svg" },
+    { label: "Egg yolk", image: "/images/proteins/protein-eggyolk.svg", icon: "/images/proteins/protein-eggyolk-small.svg" },
+    { label: "Bologna", image: "/images/proteins/protein-bologna.svg", icon: "/images/proteins/protein-bologna-small.svg" },
+    { label: "Bacon", image: "/images/proteins/protein-bacon.svg", icon: "/images/proteins/protein-bacon-small.svg" },
   ]
   
   function getPageBackground() {
@@ -54,6 +62,11 @@
   function pickCheese() {
     const randomIndex = Math.floor(Math.random() * cheeses.length);
     return cheeses[randomIndex];
+  }
+
+  function pickProtein() {
+    const randomIndex = Math.floor(Math.random() * proteins.length);
+    return proteins[randomIndex];
   }
   
   function pickVegetable() {
@@ -93,11 +106,13 @@
     // Each sandwich has a top and bottom bread, cheese, and vegetables
     let bread = null;
     let cheese = null;
+    let protein = null;
     let vegetableObjects = [];
 
     let sandwichComposition = {
       cheese: false,
       vegetables: false,
+      protein: false,
       // TODO Add more ingredients
     };
 
@@ -117,6 +132,10 @@
     if(cheesy === false){
       console.log('No cheese, adding cheese');
       sandwichComposition.cheese = true;
+    }
+
+    if (sandwichComposition.protein) {
+      protein = pickProtein();
     }
 
     if (sandwichComposition.cheese) {
@@ -144,6 +163,7 @@
 
     return {
       topBread: bread,
+      protein: protein,
       cheese: cheese,
       vegetables: vegetableObjects,
       bottomBread: bread
@@ -190,6 +210,9 @@
         {#if sandwich.cheese}
           <img src="{sandwich.cheese.image}" alt="{sandwich.cheese.label}" />
         {/if}
+        {#if sandwich.protein}
+          <img src="{sandwich.protein.image}" alt="{sandwich.protein.label}" />
+        {/if}
         <img src="{sandwich.bottomBread.image}" alt="{sandwich.bottomBread.label}" />
       </div>
     </section>
@@ -197,7 +220,7 @@
     <div class="ingredient-list">
       <h2>Ingredients</h2>
       <section class="grid">
-        {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese].filter(Boolean) as ingredient (ingredient.label)}
+        {#each [sandwich.topBread, ...sandwich.vegetables, sandwich.cheese, sandwich.protein].filter(Boolean) as ingredient (ingredient.label)}
           <p>
             <img src="{ingredient.icon}" alt="{ingredient.label}" />
             {ingredient.label}
@@ -207,5 +230,7 @@
     </div>
 
   </section>
+
+  <h1 class="latest-sammitches-header center">Latest Sandwiches</h1>
 
 </section>
