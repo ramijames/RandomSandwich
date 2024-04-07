@@ -75,76 +75,75 @@
     return vegetables[randomIndex];
   }
   
+  // We need to make sure that the sandwich isn't just bread
   function validateSandwich(sandwich){
-    // console.log('Validating sandwich:', sandwich);
     let sandwichValid = true;
-    if (!sandwich.cheese && !sandwich.vegetables) {
+    if (!sandwich.cheese && !sandwich.vegetables && !sandwich.protein) {
       sandwichValid = false;
     }
     return sandwichValid;
   }
 
-  function sandwichStack(sandwich){
-    let stack = 0;
-    if(sandwich.bread){
-      stack = 2;
-    }
-    if(sandwich.cheese){
-      stack++;
-    }
-    if(sandwich.vegetables){
-      stack = stack + sandwich.vegetables.length;
-    }
-    return stack;
-  }
+  // function sandwichStack(sandwich){
+  //   let stack = 0;
+  //   if(sandwich.bread){
+  //     stack = 2;
+  //   }
+  //   if(sandwich.cheese){
+  //     stack++;
+  //   }
+  //   if(sandwich.vegetables){
+  //     stack = stack + sandwich.vegetables.length;
+  //   }
+  //   return stack;
+  // }
 
-  // For each ingredient type, I just want to return whether or not it should be included in the sandwich
-  function randomIngredient(){
-    return Math.random() < 0.5;
-  }
+  let sandwich = buildSandwich(true, true, true);
 
-  function buildSandwich() {
+  /**
+   * @param {boolean} hasCheese
+   * @param {boolean} hasMeat
+   * @param {boolean} hasVegetables
+   */
+  function buildSandwich(hasCheese, hasMeat, hasVegetables) {
+    
     // Each sandwich has a top and bottom bread, cheese, and vegetables
+    // Each ingredient needs a start state of null
     let bread = null;
     let cheese = null;
     let protein = null;
     let vegetableObjects = [];
 
     let sandwichComposition = {
-      cheese: false,
-      vegetables: false,
-      protein: false,
-      // TODO Add more ingredients
+      cheese: hasCheese,
+      vegetables: hasMeat,
+      protein: hasVegetables,
     };
-
-    // console.log('Sandwich composition start:', sandwichComposition);
 
     for (let ingredient in sandwichComposition) {
       sandwichComposition[ingredient] = Math.random() < 0.5;
     }
 
-    // console.log('Sandwich composition randomized:', sandwichComposition);
-
     // Randomly pick a bread, we always have bread
     bread = pickBread();
 
     // Add cheese if the sandwich composition includes cheese
-    let cheesy = validateSandwich(sandwichComposition);
-    if(cheesy === false){
-      console.log('No cheese, adding cheese');
-      sandwichComposition.cheese = true;
-    }
-
-    if (sandwichComposition.protein && hasMeat) {
-      protein = pickProtein();
-    }
-
-    if (sandwichComposition.cheese && hasCheese) {
+    if(hasCheese){
       cheese = pickCheese();
     }
 
+    // Add protein if the sandwich composition includes protein
+    if (hasMeat) {
+      protein = pickProtein();
+    }
+
+    // Must validate sandwich
+    // if (!validateSandwich(sandwichComposition)) {
+    //   return buildSandwich(hasCheese, hasMeat, hasVegetables);
+    // }
+
     // Add vegetables if the sandwich composition includes vegetables
-    if (sandwichComposition.vegetables) {
+    if (hasVegetables) {
       // Generate a random number of vegetables (between 1 and the total number of vegetables)
       const numVegetables = Math.floor(Math.random() * vegetables.length) + 1;
 
@@ -162,7 +161,10 @@
       }
     }
 
-    console.log('switched');
+    console.log(sandwichComposition);
+    console.log(hasCheese);
+    console.log(hasMeat);
+    console.log(hasVegetables);
 
     return {
       topBread: bread,
@@ -174,12 +176,8 @@
   }
 
   $: {
-    buildSandwich();
+    buildSandwich(hasCheese, hasMeat, hasVegetables);
   }
-
-  const sandwich = buildSandwich();
-
-  // console.log('Sandwich:', sandwich);
 
   const background = getPageBackground();
   
@@ -204,9 +202,30 @@
 
     <section class="sandwich-selector">
       <h2>Includes</h2>
-      <Switch bind:value={hasCheese} label="Add cheese?" design="inner" />
-      <Switch bind:value={hasMeat} label="Add meat?" design="inner" />
-      <Switch bind:value={hasVegetables} label="Add vegetables?" design="inner" />
+      <!-- <button on:click={() => hasCheese = !hasCheese}>
+        {hasCheese ? 'Has cheese' : 'No cheese'}
+      </button> -->
+
+      <!-- <Switch label="Has cheese?" bind:checked={hasCheese} design="inner" />
+      <Switch label="Has meat?" bind:checked={hasMeat} design="inner" />
+      <Switch label="Has vegetables?" bind:checked={hasVegetables} design="inner" /> -->
+
+      <!-- <button on:click="{buildSandwich(hasCheese, hasMeat, hasVegetables)}">New sandwich</button> -->
+
+      <label>
+        <input type="checkbox" bind:checked={hasCheese} />
+        Has cheese?
+      </label>
+      <label>
+        <input type="checkbox" bind:checked={hasMeat} />
+        Has meat?
+      </label>
+      <label>
+        <input type="checkbox" bind:checked={hasVegetables} />
+        Has vegetables?
+      </label>
+    
+      <button on:click="{buildSandwich(hasCheese, hasMeat, hasVegetables)}">New sandwich</button>
     </section>
 
     <section class="sandwich-image loader">
