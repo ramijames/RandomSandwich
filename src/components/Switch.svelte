@@ -23,7 +23,7 @@
 
       checked = state === 'true' ? false : true
 
-      value = checked === true ? 'on' : 'off'
+      value = checked === true ? 'yes' : 'no'
   }
 
   const slugify = (str = "") =>
@@ -39,8 +39,8 @@
       aria-checked={checked}
       aria-labelledby={`switch-${uniqueID}`}
       on:click={handleClick}>
-          <span>on</span>
-          <span>off</span>
+          <span>yes</span>
+          <span>no</span>
   </button>
 </div>
 {:else if design == 'slider'}

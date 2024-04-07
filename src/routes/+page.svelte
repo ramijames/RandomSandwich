@@ -6,9 +6,9 @@
 
   import Switch from '../components/Switch.svelte'
 	
-	// let switchValue;
-	let hasCheese = false;
-	// let multiValue;
+	let hasCheese = true;
+  let hasMeat = true;
+  let hasVegetables = true;
 
   // Page background colors
   const colors = [
@@ -135,11 +135,11 @@
       sandwichComposition.cheese = true;
     }
 
-    if (sandwichComposition.protein) {
+    if (sandwichComposition.protein && hasMeat) {
       protein = pickProtein();
     }
 
-    if (sandwichComposition.cheese) {
+    if (sandwichComposition.cheese && hasCheese) {
       cheese = pickCheese();
     }
 
@@ -162,6 +162,8 @@
       }
     }
 
+    console.log('switched');
+
     return {
       topBread: bread,
       protein: protein,
@@ -169,6 +171,10 @@
       vegetables: vegetableObjects,
       bottomBread: bread
     };
+  }
+
+  $: {
+    buildSandwich();
   }
 
   const sandwich = buildSandwich();
@@ -198,7 +204,9 @@
 
     <section class="sandwich-selector">
       <h2>Includes</h2>
-      <Switch bind:value={hasCheese} label="Cheese?" design="slider" /> 
+      <Switch bind:value={hasCheese} label="Add cheese?" design="inner" />
+      <Switch bind:value={hasMeat} label="Add meat?" design="inner" />
+      <Switch bind:value={hasVegetables} label="Add vegetables?" design="inner" />
     </section>
 
     <section class="sandwich-image loader">
