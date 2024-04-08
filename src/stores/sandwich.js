@@ -6,6 +6,11 @@ export const useSandwichStore = defineStore('sandwich', {
       hasCheese: true,
       hasMeat: true,
       hasVegetables: true,
+      cheese: [],
+      vegetables: [],
+      protein: [],
+      bread: [],
+      vegetables: [],
      }
   },
   actions: {
