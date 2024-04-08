@@ -1,5 +1,4 @@
 <script>
-import { ref } from 'vue'
 import { useSandwichStore } from '../stores/sandwich'
 
 export default {
@@ -34,17 +33,6 @@ export default {
   setup () {
 
     const sandwich = useSandwichStore()
-
-    // let renderedSandwich = {
-    //   hasCheese: sandwich.hasCheese,
-    //   hasMeat: sandwich.hasMeat,
-    //   hasVegetables: sandwich.hasVegetables,
-    //   cheese: sandwich.cheese,
-    //   vegetables: sandwich.vegetables,
-    //   protein: sandwich.protein,
-    //   bread: sandwich.bread,
-    //   vegetables: sandwich.vegetables
-    // }
 
     return {
       sandwich
