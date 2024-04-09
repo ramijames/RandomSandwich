@@ -9,8 +9,7 @@ export const useSandwichStore = defineStore('sandwich', {
       cheese: [],
       vegetables: [],
       protein: [],
-      bread: [],
-      vegetables: [],
+      bread: []
      }
   },
   actions: {

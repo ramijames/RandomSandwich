@@ -1,12 +1,13 @@
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, watchEffect, onMounted } from 'vue'
+import { getAuth,onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'vue-router'
 import RandomSandwich from './components/RandomSandwich.vue'
 import Title from './components/Title.vue'
 
 export default {
   data() {
     return {
-      
     }
   },
   setup() {
@@ -26,9 +27,32 @@ export default {
       document.body.style.backgroundColor = selectedColor.value.hex;
     });
 
+    const router = useRouter()
+
+    const isLoggedIn = ref(true)
+
+    // runs after firebase is initialized
+    onAuthStateChanged(getAuth(),function(user) {
+        if (user) {
+          isLoggedIn.value = true // if we have a user
+        } else {
+          isLoggedIn.value = false // if we do not
+        }
+    })
+
+    const handleSignOut = () => {
+      signOut(getAuth())
+      router.push('/')
+      console.log('Signed out')
+    }
+
     return {
-      selectedColor
+      selectedColor,
+      isLoggedIn,
+      handleSignOut
     };
+  },
+  methods: {
   },
   components: {
     RandomSandwich,
@@ -40,8 +64,23 @@ export default {
 
 <template>
   <main class="container">
-    <Title />
-    <RandomSandwich />
+    <nav>
+      <router-link to="/"> Home </router-link> |
+      <span> 
+        <router-link to="/feed"> Feed </router-link> |
+      </span>
+      <span v-if="isLoggedIn"> 
+        <button @click="handleSignOut"> Logout </button> 
+      </span>
+      <span v-else>
+        <router-link to="/register"> Register </router-link> |
+        <router-link to="/sign-in"> Login </router-link>
+      </span>
+      
+    </nav>
+    <router-view />
+    <!-- <Title /> -->
+    <!-- <RandomSandwich /> -->
   </main>
 </template>
 
