@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Firebase
+firebase.config.js
+firebase-debug.log
+database.rules.json
+database-debug.log
+firestore-debug.log
+ui-debug.log
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

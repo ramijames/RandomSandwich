@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     generateSandwich() {
-      console.log('Generating a new sandwich');
+      // console.log('Generating a new sandwich');
       this.sandwichComposition = useSandwichStore()
       
       // Randomly pick a bread, we always have bread
@@ -64,23 +64,23 @@ export default {
       for (let i = 0; i < numVegetables; i++) {
         let vegetable = this.pickVegetable();
         this.sandwichComposition.vegetables.push(vegetable);
-        console.log("Adding vegetable", vegetable)
+        // console.log("Adding vegetable", vegetable)
       }
 
       this.sandwichComposition.vegetables = [...new Set(this.sandwichComposition.vegetables)];
-      console.log(this.sandwichComposition.vegetables);
+      // console.log(this.sandwichComposition.vegetables);
     },
     pickBread() {
       const randomIndex = Math.floor(Math.random() * this.breads.length);
       return this.breads[randomIndex];
     },
     pickCheese() {
-      console.log("Picking cheese");
+      // console.log("Picking cheese");
       const randomIndex = Math.floor(Math.random() * this.cheeses.length);
       return this.cheeses[randomIndex];
     },
     pickProtein() {
-      console.log("Picking protein");
+      // console.log("Picking protein");
       const randomIndex = Math.floor(Math.random() * this.proteins.length);
       return this.proteins[randomIndex];
     },
