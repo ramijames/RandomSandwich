@@ -1,7 +1,7 @@
 <svg width="380" height="100" viewBox="0 0 380 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M240 95C310.14 95 367 74.629 367 49.5C367 24.371 310.14 4 240 4C211.859 4 185.855 7.2792 164.804 12.8292C156.782 12.2852 148.488 12 140 12C69.8598 12 13 31.4756 13 55.5C13 79.5244 69.8598 99 140 99C163.251 99 185.042 96.8599 203.787 93.1235C215.263 94.3445 227.418 95 240 95Z" fill="black" fill-opacity="0.1"/>
 <ellipse cx="140" cy="51.5" rx="127" ry="43.5" fill="#BE602E"/>
-<ellipse cx="140" cy="47.5" rx="127" ry="43.5" fill="#EFC7AE"/>
+<ellipse cx="140" cy="47.5" rx="127" ry="43.5" fill="#FDDFCD"/>
 <ellipse cx="140" cy="47" rx="127" ry="43" fill="#DFBAA3"/>
 <ellipse cx="140" cy="47" rx="124" ry="41" fill="#DBB39A"/>
 <ellipse cx="139" cy="46.5" rx="2" ry="0.5" fill="#D5A98D"/>
@@ -99,7 +99,7 @@
 <ellipse cx="124" cy="73.5" rx="2" ry="0.5" fill="#D5A98D"/>
 <ellipse cx="74" cy="63.5" rx="2" ry="0.5" fill="#D5A98D"/>
 <ellipse cx="240" cy="49.3681" rx="127" ry="40.6319" fill="#BE602E"/>
-<ellipse cx="240" cy="45.6319" rx="127" ry="40.6319" fill="#EFC7AE"/>
+<ellipse cx="240" cy="45.6319" rx="127" ry="40.6319" fill="#FDDFCD"/>
 <ellipse cx="240" cy="45.1648" rx="127" ry="40.1648" fill="#DFBAA3"/>
 <ellipse cx="240" cy="45.1648" rx="124" ry="38.2967" fill="#DBB39A"/>
 <ellipse cx="239" cy="44.6978" rx="2" ry="0.467033" fill="#D5A98D"/>

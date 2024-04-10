@@ -137,7 +137,7 @@ export default {
 
     <section class="sandwich-selector">
       <section class="types">
-        <button @click="randomizeIngredients">Random</button>
+        <button @click="randomizeIngredients">Randomize</button>
         <div class="checkbox">
           <input type="checkbox" id="cheese" v-model="sandwich.hasCheese" />
           <label for="cheese">Cheese</label>
@@ -170,24 +170,22 @@ export default {
     </section>
 
     <div class="ingredient-list ">
-      <section class="grid ingredients-container">
-        <div class="ingredient">
-          <img :src="sandwich.bread.icon" :alt="sandwich.bread.label" />
-          <p>{{ sandwich.bread.label }}</p>
-        </div>
-        <div v-if="sandwich.hasVegetables" v-for="vegetable in sandwich.vegetables" class="ingredient">
-          <img :src="vegetable.icon" :alt="vegetable.label" />
-          <p>{{ vegetable.label }}</p>
-        </div>
-        <div v-if="sandwich.hasCheese" class="ingredient">
-          <img :src="sandwich.cheese.icon" :alt="sandwich.cheese.label" />
-          <p>{{ sandwich.cheese.label }}</p>
-        </div>
-        <div v-if="sandwich.hasMeat" class="ingredient">
-          <img :src="sandwich.protein.icon" :alt="sandwich.protein.label" />
-          <p>{{ sandwich.protein.label }}</p>
-        </div>
-      </section>
+      <div class="ingredient">
+        <img :src="sandwich.bread.icon" :alt="sandwich.bread.label" />
+        <p>{{ sandwich.bread.label }}</p>
+      </div>
+      <div v-if="sandwich.hasVegetables" v-for="vegetable in sandwich.vegetables" class="ingredient">
+        <img :src="vegetable.icon" :alt="vegetable.label" />
+        <p>{{ vegetable.label }}</p>
+      </div>
+      <div v-if="sandwich.hasCheese" class="ingredient">
+        <img :src="sandwich.cheese.icon" :alt="sandwich.cheese.label" />
+        <p>{{ sandwich.cheese.label }}</p>
+      </div>
+      <div v-if="sandwich.hasMeat" class="ingredient">
+        <img :src="sandwich.protein.icon" :alt="sandwich.protein.label" />
+        <p>{{ sandwich.protein.label }}</p>
+      </div>
     </div>
 
   </section>
@@ -321,7 +319,7 @@ export default {
   width: 800px;
   height: 800px;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, .40) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0) 100%);
 }
 
 .sandwich {
@@ -336,6 +334,7 @@ export default {
   justify-content: center;
   border-radius: 100%;
   overflow: hidden;
+  box-shadow: inset 0 4px 0px #ffffff68, inset 0 -20px 36px #0000007e, 0 14px 20px #221b3e45, 0 14px 0 #00000016, 0 2px 2px #00000016;
 }
 
 .sandwich-stack {
@@ -348,56 +347,90 @@ export default {
   position: absolute;
   left: 0;
   filter: drop-shadow(0 10px 6px #00000016);
+  animation-name: drop-ingredient;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes drop-ingredient {
+  0% {
+    transform:translateY(-200%);
+    opacity: 0;
+  }
+  70% {
+    transform:translateY(0%);
+    opacity: 1;
+  }
+  80% {
+    transform:translateY(10%);
+    opacity: 1;
+  }
+  100% {
+    transform:translateY(0%);
+    opacity: 1;
+  }
 }
 
 .sandwich-stack img:nth-child(1) {
   top: 0px;
   z-index: 100;
+  animation-delay: 1000ms;
 }
 
 .sandwich-stack img:nth-child(2) {
   top: 40px;
   z-index: 99;
+  animation-delay: 900ms;
 }
 
 .sandwich-stack img:nth-child(3) {
   top: 80px;
   z-index: 98;
+  animation-delay: 800ms;
 }
 
 .sandwich-stack img:nth-child(4) {
   top: 120px;
   z-index: 97;
+  animation-delay: 700ms;
 }
 
 .sandwich-stack img:nth-child(5) {
   top: 160px;
   z-index: 96;
+  animation-delay: 600ms;
 }
 
 .sandwich-stack img:nth-child(6) {
   top: 220px;
   z-index: 95;
+  animation-delay: 500ms;
 }
 
 .sandwich-stack img:nth-child(7) {
   top: 260px;
   z-index: 94;
+  animation-delay: 400ms;
 }
 
 .sandwich-stack img:nth-child(8) {
   top: 320px;
   z-index: 93;
+  animation-delay: 300ms;
 }
 
 .sandwich-stack img:nth-child(9) {
   top: 400px;
   z-index: 92;
+  animation-delay: 200ms;
 }
 
 .sandwich-stack img:nth-child(10) {
   top: 440px;
   z-index: 91;
+  animation-delay: 100ms;
 }
 
 /* INGREDIENTS */
@@ -406,23 +439,12 @@ export default {
   text-align: right;
   color: #000;
   padding:2rem;
-}
-
-.ingredients-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
   max-width: 800px;
   margin:0 auto;
-}
-
-.ingredient-list h2 {
-  text-shadow: 0 2px 2px rgba(0,0,0,.1), 0 4px 0 rgba(0,0,0,.1);
-  text-align: center;
-}
-
-.ingredient-list .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 2rem;
-  row-gap: 0rem;
 }
 
 .ingredient-list p {
@@ -439,7 +461,7 @@ export default {
   display:flex;
   flex-direction: column;
   justify-content: center;
-  padding: .25rem .5rem;
+  width:160px;
 }
 
 .ingredient img {
