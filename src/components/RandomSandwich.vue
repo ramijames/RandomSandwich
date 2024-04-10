@@ -330,10 +330,12 @@ export default {
 }
 
 .sandwich-image {
-  margin:0 auto;
+  margin:2rem auto 0;
   display:flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 100%;
+  overflow: hidden;
 }
 
 .sandwich-stack {

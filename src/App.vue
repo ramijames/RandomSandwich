@@ -47,6 +47,7 @@ export default {
 
 <template>
   <main>
+    <Footer />
     <Title />
     <nav class="nav-links">
       <section class="routes">
@@ -60,7 +61,6 @@ export default {
       </section>
     </nav>
     <router-view />
-    <Footer />
   </main>
 </template>
 

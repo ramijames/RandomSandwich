@@ -16,25 +16,6 @@ body {
   margin: 0 auto;
 }
 
-.links {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: 1.5vw;
-  padding:5vw 5vw 0 5vw;
-  color: white;
-}
-
-@media only screen and (min-width: 1600px) {
-  .links {
-    font-size:1vw;
-  }
-}
-
-.links a {
-  color: white;
-}
-
 .center {
   text-align: center;
 }
