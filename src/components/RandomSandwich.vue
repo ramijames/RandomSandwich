@@ -309,6 +309,19 @@ export default {
 #sandwichBackground {
   width:800px;
   height:800px;
+  position: relative;
+}
+
+#sandwichBackground::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 800px;
+  height: 800px;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .40) 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0) 100%);
 }
 
 .sandwich {
