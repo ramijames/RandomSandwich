@@ -1,3 +1,7 @@
+<script setup>
+  import RandomSandwich from '../components/RandomSandwich.vue'
+</script>
+
 <template>
-  <h1> Home </h1>
+  <RandomSandwich />
 </template>

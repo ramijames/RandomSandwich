@@ -20,7 +20,7 @@ body {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 2vw;
+  font-size: 1.5vw;
   padding:5vw 5vw 0 5vw;
   color: white;
 }
@@ -33,29 +33,10 @@ body {
 
 .links a {
   color: white;
-  font-weight: 900;
 }
 
-.sammitch-intro {
-  font-size:1dvw;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  color:white;
-  text-shadow: 0 4px 2px rgba(0,0,0,.2);
-  margin: 0 auto;
-  display: block;
-}
-
-.sammitch-header {
-  font-size:9dvw;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900;
-  font-style: normal;
-  color:white;
-  text-shadow: 0 4px 2px rgba(0,0,0,.2), 0 10px 0 rgba(0,0,0,.2);
-  margin-top: 0;
+.center {
+  text-align: center;
 }
 
 .latest-sammitches-header {
@@ -68,154 +49,6 @@ body {
   text-shadow: 0 4px 2px rgba(0,0,0,.2), 0 10px 0 rgba(0,0,0,.2);
   padding-bottom:1.5rem;
   margin: 10rem 5vw;
-}
-
-@media only screen and (min-width: 1600px) {
-  .sammitch-header {
-    font-size:5dvw;
-  }
-}
-
-.sandwich-selector {
-  width: 25%;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
-  color: white;
-  padding-right: 2rem;
-  margin-top: -4rem;
-}
-
-.sandwich-selector h2 {
-  text-shadow: 0 2px 2px rgba(0,0,0,.1), 0 4px 0 rgba(0,0,0,.1);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-
-.sandwich-builder {
-  display:flex;
-  flex-direction: row;
-  margin:0 5vw
-}
-
-.center {
-  text-align: center;
-}
-
-.sandwich {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.sandwich-image {
-  width:50%;
-}
-
-.sandwich-stack {
-  position: relative;
-}
-
-.sandwich-stack img {
-  width:100%;
-  position: absolute;
-  left: 0;
-  filter: drop-shadow(0 10px 6px #00000016);
-}
-
-.sandwich-stack img:nth-child(1) {
-  top: 0px;
-  z-index: 100;
-}
-
-.sandwich-stack img:nth-child(2) {
-  top: 2vw;
-  z-index: 99;
-}
-
-.sandwich-stack img:nth-child(3) {
-  top: 4vw;
-  z-index: 98;
-}
-
-.sandwich-stack img:nth-child(4) {
-  top: 6vw;
-  z-index: 97;
-}
-
-.sandwich-stack img:nth-child(5) {
-  top: 8vw;
-  z-index: 96;
-}
-
-.sandwich-stack img:nth-child(6) {
-  top: 10vw;
-  z-index: 95;
-}
-
-.sandwich-stack img:nth-child(7) {
-  top: 12vw;
-  z-index: 94;
-}
-
-.sandwich-stack img:nth-child(8) {
-  top: 14vw;
-  z-index: 93;
-}
-
-.sandwich-stack img:nth-child(9) {
-  top: 16vw;
-  z-index: 92;
-}
-
-.sandwich-stack img:nth-child(10) {
-  top: 18vw;
-  z-index: 91;
-}
-
-/* Recipe */
-
-.ingredient-list {
-  width: 25%;
-  text-align: right;
-  color: white;
-  padding-left:2rem;
-  margin-top: -4rem;
-}
-
-.ingredient-list h2 {
-  text-shadow: 0 2px 2px rgba(0,0,0,.1), 0 4px 0 rgba(0,0,0,.1);
-  text-align: center;
-}
-
-.ingredient-list .grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 2rem;
-  row-gap: 0rem;
-}
-
-.ingredient-list p {
-  text-align: center;
-  font-size:12px;
-}
-
-.ingredient-list img {
-  width: 100%;
-  margin:0 auto;
-  filter: drop-shadow(0 4px 2px #00000020);
-}
-
-.ingredient {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: .25rem .5rem;
-}
-
-.ingredient img {
-  width: 70%;
-  margin:0 auto;
 }
 
 .loader {
@@ -240,17 +73,23 @@ body {
   }
 }
 
-/* Switch */
+/* Buttons */
 
-.s--inner {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 38px;
-  margin-bottom:1rem;
+button {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+  padding: .45rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #000000;
+  border:0;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.s--inner button {
-  border-radius: 6px;
+button:hover {
+  background-color: #0000009d;
 }

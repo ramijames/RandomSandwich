@@ -2,8 +2,8 @@
 import { ref, watchEffect, onMounted } from 'vue'
 import { getAuth,onAuthStateChanged, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
-import RandomSandwich from './components/RandomSandwich.vue'
 import Title from './components/Title.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   data() {
@@ -11,22 +11,6 @@ export default {
     }
   },
   setup() {
-    const selectedColor = ref(null);
-
-    onMounted(() => {
-      const colors = [
-        { label: "Pickle", hex: "#3E9C13", image: "/backgrounds/bg-pickle.png" },
-        { label: "Tomato", hex: "#DB6548", image: "/backgrounds/bg-tomato.png" },
-        { label: "Carrot", hex: "#D1AC2A", image: "/backgrounds/bg-carrot.png" },
-        { label: "Eggplant", hex: "#7844AA", image: "/backgrounds/bg-eggplant.png" },
-        { label: "Mushroom", hex: "#BD9B8E", image: "/backgrounds/bg-mushroom.png" },
-      ];
-      const randomIndex = Math.floor(Math.random() * colors.length);
-      selectedColor.value = colors[randomIndex];
-      document.body.style.backgroundImage = `url(${selectedColor.value.image})`;
-      document.body.style.backgroundColor = selectedColor.value.hex;
-    });
-
     const router = useRouter()
 
     const isLoggedIn = ref(true)
@@ -47,7 +31,6 @@ export default {
     }
 
     return {
-      selectedColor,
       isLoggedIn,
       handleSignOut
     };
@@ -55,35 +38,60 @@ export default {
   methods: {
   },
   components: {
-    RandomSandwich,
     Title,
+    Footer
   }
 }
 
 </script>
 
 <template>
-  <main class="container">
-    <nav>
-      <router-link to="/"> Home </router-link> |
-      <span> 
-        <router-link to="/feed"> Feed </router-link> |
-      </span>
-      <span v-if="isLoggedIn"> 
-        <button @click="handleSignOut"> Logout </button> 
-      </span>
-      <span v-else>
-        <router-link to="/register"> Register </router-link> |
-        <router-link to="/sign-in"> Login </router-link>
-      </span>
-      
+  <main>
+    <Title />
+    <nav class="nav-links">
+      <section class="routes">
+        <router-link to="/">Home</router-link>
+        <router-link to="/add">Add</router-link>
+      </section>
+      <section class="actions">
+        <button v-if="isLoggedIn" @click="handleSignOut">Logout</button> 
+        <router-link v-if="!isLoggedIn" to="/register">Register</router-link>
+        <router-link v-if="!isLoggedIn" to="/sign-in">Login</router-link>
+      </section>
     </nav>
     <router-view />
-    <!-- <Title /> -->
-    <!-- <RandomSandwich /> -->
+    <Footer />
   </main>
 </template>
 
 <style scoped>
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin:0 auto;
+  padding:0 2rem;
+  gap:2rem;
+  align-items: center;
+  padding: 0 1rem 1rem 1rem;
+  background-color: rgba(255,255,255,1);
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.routes {
+  display: flex;
+  gap: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
 
 </style>
