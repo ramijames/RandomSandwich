@@ -389,7 +389,7 @@ export default {
 
 .ingredient-list {
   text-align: right;
-  color: white;
+  color: #000;
   padding:2rem;
 }
 
@@ -405,20 +405,19 @@ export default {
 
 .ingredient-list .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 0rem;
 }
 
 .ingredient-list p {
   text-align: center;
-  font-size:12px;
+  font-size:1rem;
 }
 
 .ingredient-list img {
   width: 100%;
   margin:0 auto;
-  filter: drop-shadow(0 4px 2px #00000020);
 }
 
 .ingredient {
