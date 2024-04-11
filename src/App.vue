@@ -49,13 +49,13 @@ export default {
   <main>
     <nav class="nav-links">
       <section class="routes">
-        <router-link to="/">Home</router-link>
-        <router-link to="/add">Add</router-link>
+        <router-link to="/">Generator</router-link>
+        <router-link v-if="isLoggedIn" to="/add">Add</router-link>
       </section>
       <section class="actions">
         <button v-if="isLoggedIn" @click="handleSignOut">Logout</button> 
-        <router-link v-if="!isLoggedIn" to="/register">Register</router-link>
-        <router-link v-if="!isLoggedIn" to="/sign-in">Login</router-link>
+        <router-link class="button" v-if="!isLoggedIn" to="/register">Register</router-link>
+        <router-link class="button" v-if="!isLoggedIn" to="/sign-in">Login</router-link>
       </section>
     </nav>
     <Title />
@@ -69,7 +69,7 @@ export default {
 nav {
   display: flex;
   justify-content: space-between;
-  padding:2rem;
+  padding:2rem 2rem 0;
   gap:2rem;
   align-items: center;
   background-color: rgba(255,255,255,1);

@@ -153,12 +153,10 @@ export default {
           <label for="vegetables">Vegetables</label>
           <span class="checkmark"></span>
         </div>
-      </section>
-      <section class="actions">
         <button @click="generateSandwich">Generate New</button>
       </section>
     </section>
-    
+
     <section id="sandwichBackground" class="sandwich-image loader">
       <div ref="sandwichStack" class="sandwich sandwich-stack" :style="{ height: sandwichHeight }">
         <img ref="singleIngredient" :src="sandwich.bread.image" :alt="sandwich.bread.label" />
@@ -204,10 +202,10 @@ export default {
 .sandwich-selector {
   width:100%;
   max-width: 800px;
-  margin:0 auto;
+  margin:0 auto 1.5rem;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
   color: #000000;
   gap:1rem;
@@ -218,7 +216,7 @@ export default {
       display:flex;
       flex-direction: row;
       gap:2rem;
-      padding:1rem 0;
+      padding:0;
       justify-content: center;
     }
 
@@ -301,6 +299,25 @@ export default {
   font-size:1rem;
 }
 
+.buttons-stack {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap:1rem;
+  padding:1rem 0;
+  max-width:600px;
+  width: 100%;
+  margin:0 auto;
+  z-index: 1;
+  position: relative;
+  top:20px;
+}
+
+    .buttons-stack button {
+      padding:1rem 2rem;
+      font-size:1.5rem;
+    }
+
 /* BUILD */
 
 #sandwichBackground {
@@ -327,7 +344,7 @@ export default {
 }
 
 .sandwich-image {
-  margin:2rem auto 0;
+  margin:0 auto;
   display:flex;
   flex-direction: column;
   justify-content: center;

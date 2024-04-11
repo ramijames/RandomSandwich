@@ -56,7 +56,8 @@ body {
 
 /* Buttons */
 
-button {
+button,
+.button {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -66,11 +67,12 @@ button {
   border-radius: 5px;
   background-color: #000000;
   border:0;
-  color: #ffffff;
+  color: #ffffff !important;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: #0000009d;
 }
