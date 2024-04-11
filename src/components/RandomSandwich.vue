@@ -212,7 +212,6 @@ export default {
   color: #000000;
   gap:1rem;
   background-color: #ffffff;
-  border-top:1px solid #00000016;
 }
 
     .types {

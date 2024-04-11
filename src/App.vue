@@ -84,6 +84,11 @@ nav a {
   color: black;
 }
 
+.router-link-active, 
+.router-link-exact-active {
+  border-bottom: 2px solid black;
+}
+
 .routes {
   display: flex;
   gap: 1rem;
