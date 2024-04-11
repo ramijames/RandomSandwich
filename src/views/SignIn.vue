@@ -1,9 +1,15 @@
 <template>
-  <h1> Login to Your Account </h1>
-  <p> <input type='text' placeholder="Email" v-model='email'/> </p>
-  <p> <input type='password' placeholder="Password" v-model='password'/> </p>
-  <p v-if="errMsg"> {{ errMsg }} </p>
-  <p> <button @click="signIn"> Submit </button> </p>
+  <main id="signin-form">
+    <section class="form-details">
+      <h2>Sign in to your account</h2>
+      <p>Don't have an account? <router-link to="/register">Register</router-link></p>
+      <p><input type='text' placeholder="Email" v-model='email'/></p>
+      <p><input type='password' placeholder="Password" v-model='password'/></p>
+      <p v-if="errMsg">{{ errMsg }}</p>
+      <p><button @click="signIn">Let's eat!</button></p>
+    </section>
+    <img src="/login-man.png" alt="Man eating a random sandwich" />
+  </main>
 </template>
 
 <script setup>
@@ -21,7 +27,7 @@ const signIn = () => { // we also renamed this method
 signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE CHANGED
   .then((data) => {
     console.log('Successfully logged in!');
-    router.push('/feed') // redirect to the feed
+    router.push('/home')
   })
   .catch(error => {
     switch (error.code) {
@@ -41,3 +47,42 @@ signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE C
   });
 }
 </script>
+
+<style>
+
+#signin-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-details {
+  max-width: 400px;
+}
+
+.form-details h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-details p {
+  margin-bottom: 1rem;
+}
+
+.form-details input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-details button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+</style>
