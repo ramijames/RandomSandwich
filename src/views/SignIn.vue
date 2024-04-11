@@ -27,7 +27,7 @@ const signIn = () => { // we also renamed this method
 signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE CHANGED
   .then((data) => {
     console.log('Successfully logged in!');
-    router.push('/home')
+    router.push('/')
   })
   .catch(error => {
     switch (error.code) {

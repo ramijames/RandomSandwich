@@ -25,7 +25,7 @@ const register = () => {
   createUserWithEmailAndPassword(getAuth(),email.value, password.value) // need .value because ref()
   .then((data) => {
     console.log('Successfully registered!');
-    router.push('/home')
+    router.push('/')
   })
   .catch(error => {
     console.log(error.code)

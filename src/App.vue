@@ -47,8 +47,6 @@ export default {
 
 <template>
   <main>
-    <Footer />
-    <Title />
     <nav class="nav-links">
       <section class="routes">
         <router-link to="/">Home</router-link>
@@ -60,7 +58,9 @@ export default {
         <router-link v-if="!isLoggedIn" to="/sign-in">Login</router-link>
       </section>
     </nav>
+    <Title />
     <router-view />
+    <Footer />
   </main>
 </template>
 
@@ -69,19 +69,16 @@ export default {
 nav {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  max-width: 800px;
-  margin:0 auto;
-  padding:0 2rem;
+  padding:2rem;
   gap:2rem;
   align-items: center;
-  padding: 0 1rem 1rem 1rem;
   background-color: rgba(255,255,255,1);
 }
 
 nav a {
   text-decoration: none;
   color: black;
+  font-size: 1rem;
 }
 
 .router-link-active, 
