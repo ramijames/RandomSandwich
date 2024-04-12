@@ -9,17 +9,22 @@
 
 <style scoped>
 
+#footer {
+  background-color: #000000;
+}
+
 .links {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 1rem;
   padding:2rem;
-  color: #000;
+  color: #fff;
 }
 
 .links a {
   font-weight: 600;
+  color:#fff;
 }
 
 </style>

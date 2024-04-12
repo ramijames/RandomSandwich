@@ -1,6 +1,7 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { useSandwichStore } from '../stores/sandwich'
+import Title from '../components/Title.vue'
 
 export default {
   data () {
@@ -58,7 +59,7 @@ export default {
     }
   },
   components: {
-    
+    Title
   },
   mounted() {
     this.generateSandwich();
@@ -135,6 +136,8 @@ export default {
 
   <section class="sandwich-builder">
 
+    <Title />
+
     <section class="sandwich-selector">
       <section class="types">
         <button @click="randomizeIngredients">Randomize</button>
@@ -195,6 +198,7 @@ export default {
 .sandwich-builder {
   display:flex;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
 /* ORDER */

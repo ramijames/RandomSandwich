@@ -8,14 +8,17 @@
       <p v-if="errMsg">{{ errMsg }}</p>
       <p><button @click="signIn">Let's eat!</button></p>
     </section>
-    <img src="/login-man.png" alt="Man eating a random sandwich" />
+    <section class="people-box">
+      <RandomPeople />
+    </section>
   </main>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useRouter } from 'vue-router' // import router
+import { useRouter } from 'vue-router'
+import RandomPeople from '../components/RandomPeople.vue'
 
 const email = ref('')
 const password = ref('')
@@ -54,22 +57,35 @@ signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE C
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
-  max-width: 800px;
   margin: 0 auto;
+  background-color: #ffffff;
 }
 
 .form-details {
-  max-width: 400px;
+  width:40%;
+  margin-left:10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:2rem;
+}
+
+.people-box {
+  width:40%;
+  margin-right:10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .form-details h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  margin-top: 0
 }
 
 .form-details p {
-  margin-bottom: 1rem;
+  margin-bottom: rem;
 }
 
 .form-details input {

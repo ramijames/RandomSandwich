@@ -49,6 +49,7 @@ export default {
   <main>
     <nav class="nav-links">
       <section class="routes">
+        <router-link to="/" class="logo"><img src="/logo.png" alt="Logo" /></router-link>
         <router-link to="/">Generator</router-link>
         <router-link v-if="isLoggedIn" to="/add">Add</router-link>
       </section>
@@ -58,7 +59,6 @@ export default {
         <router-link class="button" v-if="!isLoggedIn" to="/sign-in">Login</router-link>
       </section>
     </nav>
-    <Title />
     <router-view />
     <Footer />
   </main>
@@ -66,10 +66,19 @@ export default {
 
 <style scoped>
 
+.logo {
+  border: none !important;
+}
+
+    .logo img {
+      width:100px;
+      height: auto;
+    }
+
 nav {
   display: flex;
   justify-content: space-between;
-  padding:2rem 2rem 0;
+  padding:2rem;
   gap:2rem;
   align-items: center;
   background-color: rgba(255,255,255,1);
@@ -79,6 +88,7 @@ nav a {
   text-decoration: none;
   color: black;
   font-size: 1rem;
+  align-self: center;
 }
 
 .router-link-active, 

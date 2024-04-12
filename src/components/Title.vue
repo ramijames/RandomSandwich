@@ -4,7 +4,7 @@
 
 <template>
   <section id="title">
-    <h1 class="sammitch-header center">Random Sandwich</h1>
+    <h1 class="sammitch-header center">Generate a Random Sandwich</h1>
     <!-- <small class="sammitch-intro center">(Don't know what to eat? We do.)</small> -->
   </section>
 </template>
@@ -21,7 +21,7 @@
 }
 
 .sammitch-header {
-  font-size:1dvw;
+  font-size:3rem;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 900;
