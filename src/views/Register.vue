@@ -38,7 +38,7 @@ const register = () => {
 
 </script>
 
-<style>
+<style scoped>
 
 #register-form {
   display: flex;
@@ -72,12 +72,12 @@ const register = () => {
 }
 
 .form-details p {
-  margin-bottom: rem;
+  margin-bottom: 0rem;
 }
 
 .form-details input {
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .form-details button {
@@ -86,6 +86,7 @@ const register = () => {
   color: white;
   border: none;
   cursor: pointer;
+  margin-top:2rem;
 }
 
 </style>

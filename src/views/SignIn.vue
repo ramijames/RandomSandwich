@@ -51,7 +51,7 @@ signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE C
 }
 </script>
 
-<style>
+<style scoped>
 
 #signin-form {
   display: flex;
@@ -85,12 +85,12 @@ signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE C
 }
 
 .form-details p {
-  margin-bottom: rem;
+  margin-bottom: 0rem;
 }
 
 .form-details input {
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .form-details button {
@@ -99,6 +99,7 @@ signInWithEmailAndPassword(getAuth(),email.value, password.value) // THIS LINE C
   color: white;
   border: none;
   cursor: pointer;
+  margin-top:2rem;
 }
 
 </style>
