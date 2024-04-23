@@ -51,7 +51,7 @@ export default {
       <section class="routes">
         <router-link to="/" class="logo"><img src="/logo.png" alt="Logo" /></router-link>
         <router-link to="/">Generator</router-link>
-        <router-link v-if="isLoggedIn" to="/add">Add</router-link>
+        <!-- <router-link v-if="isLoggedIn" to="/add">Add</router-link> -->
       </section>
       <section class="actions">
         <button v-if="isLoggedIn" @click="handleSignOut">Logout</button> 
