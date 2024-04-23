@@ -19,9 +19,9 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 
-if (location.hostname === "localhost") {
-  connectAuthEmulator(getAuth(), "http://localhost:9099");
-}
+// if (location.hostname === "localhost") {
+//   connectAuthEmulator(getAuth(), "http://localhost:9099");
+// }
 
 const pinia = createPinia()
 

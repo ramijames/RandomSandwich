@@ -3,6 +3,13 @@
     <section class="form-details">
       <h2>Register an account</h2>
       <p>Already have an account? <router-link to="/sign-in">Sign in</router-link></p>
+      <!-- Sign in with Google -->
+      <button btnType="primary" :onClick="signInWithGoogle" class="google-button">Sign in with Google</button>
+      <section class="or-bar">
+        <div class="bar"></div>
+        <p class="or-text">Or</p>
+        <div class="bar"></div>
+      </section>
       <p><input type='text' placeholder="Email" v-model='email'/></p>
       <p><input type='password' placeholder="Password" v-model='password'/></p>
       <p v-if="errMsg">{{ errMsg }}</p>
@@ -16,12 +23,13 @@
 
 <script setup>
 import { ref } from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { useRouter } from 'vue-router'
 import RandomPeople from '../components/RandomPeople.vue'
 
 const email = ref('')
 const password = ref('')
+const errMsg = ref()
 
 const router = useRouter() // get a reference to our vue router
 const register = () => {
@@ -36,6 +44,20 @@ const register = () => {
   });
 }
 
+// Sign in with Google
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log('Successfully logged in with Google!');
+      router.push('/')
+    })
+    .catch((error) => {
+      errMsg.value = 'Failed to log in with Google';
+    });
+};
+
 </script>
 
 <style scoped>
@@ -46,6 +68,32 @@ const register = () => {
   align-items: center;
   margin: 0 auto;
   background-color: #ffffff;
+}
+
+#register-form h2, #register-form p {
+  text-align: center;
+}
+
+.google-button {
+  align-self: start;
+  margin: 0 auto;
+}
+
+.or-bar {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.or-text {
+  margin: 0 1rem;
+}
+
+.bar {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(0,0,0,0.1);
+  align-self: center;
 }
 
 .form-details {
