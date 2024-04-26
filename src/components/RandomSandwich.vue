@@ -31,6 +31,8 @@ export default {
         { label: "Bacon", image: "/proteins/protein-bacon.svg", icon: "/proteins/protein-bacon-small.svg" },
       ],
       sandwichHeight: '0px',
+      animationKey: 0,
+      renderSandwich: true,
     }
   },
   setup () {
@@ -99,7 +101,11 @@ export default {
         this.numIngredients = this.$refs.sandwichStack.querySelectorAll('img').length;
         this.sandwichHeight = parseInt(this.ingredientHeight) * this.numIngredients + "px";
       });
-      console.log(this.sandwichHeight);
+      this.renderSandwich = false;
+      this.$nextTick(() => {
+        this.renderSandwich = true;
+        this.animationKey++;
+      });
     },
     pickBread() {
       const randomIndex = Math.floor(Math.random() * this.breads.length);
@@ -162,29 +168,29 @@ export default {
 
     <section id="sandwichBackground" class="sandwich-image loader">
       <div ref="sandwichStack" class="sandwich sandwich-stack" :style="{ height: sandwichHeight }">
-        <img ref="singleIngredient" :src="sandwich.bread.image" :alt="sandwich.bread.label" />
-        <img v-if="sandwich.hasVegetables" v-for="vegetable in sandwich.vegetables" :src="vegetable.image" :alt="vegetable.label" />
-        <img v-if="sandwich.hasCheese" :src="sandwich.cheese.image" :alt="sandwich.cheese.label" />
-        <img v-if="sandwich.hasMeat" :src="sandwich.protein.image" :alt="sandwich.protein.label" />
-        <img :src="sandwich.bread.image" :alt="sandwich.bread.label" />
+        <img :key="animationKey" ref="singleIngredient" :src="sandwich.bread.image" :alt="sandwich.bread.label" />
+        <img :key="animationKey" v-if="sandwich.hasVegetables" v-for="vegetable in sandwich.vegetables" :src="vegetable.image" :alt="vegetable.label" />
+        <img :key="animationKey" v-if="sandwich.hasCheese" :src="sandwich.cheese.image" :alt="sandwich.cheese.label" />
+        <img :key="animationKey" v-if="sandwich.hasMeat" :src="sandwich.protein.image" :alt="sandwich.protein.label" />
+        <img :key="animationKey" :src="sandwich.bread.image" :alt="sandwich.bread.label" />
       </div>
     </section>
 
     <div class="ingredient-list ">
       <div class="ingredient">
-        <img :src="sandwich.bread.icon" :alt="sandwich.bread.label" />
+        <img :key="animationKey" :src="sandwich.bread.icon" :alt="sandwich.bread.label" />
         <p>{{ sandwich.bread.label }}</p>
       </div>
       <div v-if="sandwich.hasVegetables" v-for="vegetable in sandwich.vegetables" class="ingredient">
-        <img :src="vegetable.icon" :alt="vegetable.label" />
+        <img :key="animationKey" :src="vegetable.icon" :alt="vegetable.label" />
         <p>{{ vegetable.label }}</p>
       </div>
       <div v-if="sandwich.hasCheese" class="ingredient">
-        <img :src="sandwich.cheese.icon" :alt="sandwich.cheese.label" />
+        <img :key="animationKey" :src="sandwich.cheese.icon" :alt="sandwich.cheese.label" />
         <p>{{ sandwich.cheese.label }}</p>
       </div>
       <div v-if="sandwich.hasMeat" class="ingredient">
-        <img :src="sandwich.protein.icon" :alt="sandwich.protein.label" />
+        <img :key="animationKey" :src="sandwich.protein.icon" :alt="sandwich.protein.label" />
         <p>{{ sandwich.protein.label }}</p>
       </div>
     </div>

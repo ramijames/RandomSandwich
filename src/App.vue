@@ -78,7 +78,7 @@ export default {
 nav {
   display: flex;
   justify-content: space-between;
-  padding:2rem;
+  padding:1rem 2rem;
   gap:2rem;
   align-items: center;
   background-color: rgba(255,255,255,1);
