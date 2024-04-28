@@ -348,6 +348,20 @@ export default {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0) 100%);
 }
 
+@media screen and (max-width: 1024px) {
+  #sandwichBackground {
+    width:600px;
+    height:600px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #sandwichBackground {
+    width:340px;
+    height:340px;
+  }
+}
+
 .sandwich {
   width: 600px;
   margin: 0 auto;
